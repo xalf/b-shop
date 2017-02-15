@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="wrapper" id="vue-app">
+        <header>
+            <ul class="action right">
+                <li class="action__item">
+                    <a href="" class="action__link"><img src="images/search.png" alt="">search</a>
+                </li>
+                <li class="action__item">
+                    <a href="" class="action__link"><img src="images/busket.png" alt="">cart <span class="cart-count">{{ busketCount }}</span></a>
+                </li>
+                <li class="action__item">
+                    <a href="" class="action__link"><img src="images/user.png" alt="">sign in</a>
+                </li>
+            </ul>
+            <div class="logo left"></div>
+            <nav class="left nav">
+                <ul>
+                    <li class="nav__item"><a href="" class="nav__link nav__link_active">footwear</a></li>
+                    <li class="nav__item"><a href="" class="nav__link">clothing</a></li>
+                    <li class="nav__item"><a href="" class="nav__link">accessories</a></li>
+                    <li class="nav__item"><a href="" class="nav__link">brands</a></li>
+                    <li class="nav__item"><a href="" class="nav__link">clearance</a></li>
+                </ul>
+            </nav>
+            <div class="header-bottom">
+                <select class="right range">
+                    <option value="" selected>most popular</option>
+                    <option value="">most chip</option>
+                </select>
+                <h1>Footwear <small>{{ prodactsCount }} shoes</small></h1>
+            </div>
+
+        </header>
+
+        <main>
+            <div class="preview" v-for="item in prodacts">
+                <div class="preview__img" v-bind:style="{backgroundImage: 'url(' + item.image + ')'}"></div>
+                <h2 class="preview__title">{{item.name}}</h2>
+                <span class="preview__description">{{item.description}}</span>
+                <div class="preview__cost">${{item.cost}}
+                    <span class="preview__cost_old-cost">${{item.oldcost}}</span>
+                </div>
+                <div class="preview__mod_exc" v-if="item.mod === 'exc'">exclusive</div>
+                <div class="preview__mod_news" v-else-if="item.mod === 'news'">news</div>
+                <div class="preview__like"></div>
+                <div class="preview__basket" v-on:click="addInBusket(item)"></div>
+            </div>
+        </main>
+
+    <!--    <main>
+            <div class="preview">
+                <div class="preview__img" style="background-image: url('images/img1.jpg')"></div>
+                <h2 class="preview__title">model name</h2>
+                <span class="preview__description">model description</span>
+                <div class="preview__cost">$760.00
+                    <span class="preview__cost_old-cost">$850.00</span>
+                </div>
+                <div class="preview__like"></div>
+                <div class="preview__basket"></div>
+            </div>
+            <div class="preview preview_big preview_big-hor">
+                <div class="preview__img" style="background-image: url('images/img2.jpg')"></div>
+                <h2 class="preview__title">model name</h2>
+                <span class="preview__description">model description</span>
+                <div class="preview__cost">$760.00</div>
+                <div class="preview__mod_new">new</div>
+                <div class="preview__like"></div>
+                <div class="preview__basket"></div>
+            </div>
+            <div class="preview">
+                <div class="preview__img" style="background-image: url('images/img3.jpg')"></div>
+                <h2 class="preview__title">model name</h2>
+                <span class="preview__description">model description</span>
+                <div class="preview__cost">$760.00
+                    <span class="preview__cost_old-cost">$850.00</span>
+                </div>
+                <div class="preview__like"></div>
+                <div class="preview__basket"></div>
+            </div>
+            <div class="preview preview_big preview_big-ver">
+                <div class="preview__img" style="background-image: url('images/img4.jpg')"></div>
+                <h2 class="preview__title">model name</h2>
+                <span class="preview__description">model description</span>
+                <div class="preview__cost">$760.00</div>
+                <div class="preview__mod_new">new</div>
+                <div class="preview__like"></div>
+                <div class="preview__basket"></div>
+            </div>
+            <div class="preview">
+                <div class="preview__img" style="background-image: url('images/img5.jpg')"></div>
+                <h2 class="preview__title">model name</h2>
+                <span class="preview__description">model description</span>
+                <div class="preview__cost">$760.00
+                    <span class="preview__cost_old-cost">$800.00</span>
+                </div>
+                <div class="preview__mod_exc">exclusive</div>
+                <div class="preview__like"></div>
+                <div class="preview__basket"></div>
+            </div>
+            <div class="preview">
+                <div class="preview__img" style="background-image: url('images/img6.jpg')"></div>
+                <h2 class="preview__title">model name</h2>
+                <span class="preview__description">model description</span>
+                <div class="preview__cost">$760.00</div>
+                <div class="preview__mod_exc">exclusive</div>
+                <div class="preview__like"></div>
+                <div class="preview__basket"></div>
+            </div>
+            <div class="preview">
+                <div class="preview__img" style="background-image: url('images/img7.jpg')"></div>
+                <h2 class="preview__title">model name</h2>
+                <span class="preview__description">model description</span>
+                <div class="preview__cost">$760.00</div>
+                <div class="preview__like"></div>
+                <div class="preview__basket"></div>
+            </div>
+            <div class="preview">
+                <div class="preview__img" style="background-image: url('images/img8.jpg')"></div>
+                <h2 class="preview__title">model name</h2>
+                <span class="preview__description">model description</span>
+                <div class="preview__cost">$760.00</div>
+                <div class="preview__like"></div>
+                <div class="preview__basket"></div>
+            </div>
+            <div class="preview">
+                <div class="preview__img" style="background-image: url('images/img9.jpg')"></div>
+                <h2 class="preview__title">model name</h2>
+                <span class="preview__description">model description</span>
+                <div class="preview__cost">$760.00</div>
+                <div class="preview__like"></div>
+                <div class="preview__basket"></div>
+            </div>
+            <div class="preview">
+                <div class="preview__img" style="background-image: url('images/img10.jpg')"></div>
+                <h2 class="preview__title">model name</h2>
+                <span class="preview__description">model description</span>
+                <div class="preview__cost">$760.00
+                    <span class="preview__cost_old-cost">$800.00</span>
+                </div>
+                <div class="preview__like"></div>
+                <div class="preview__basket"></div>
+            </div>
+        </main>  -->
+    </div>
+    <script type="text/javascript" src="bower_components/vue/dist/vue.min.js"></script>
+    <script type="text/javascript" src="js.js"></script>
+</body>
+</html>
