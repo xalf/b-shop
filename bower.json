@@ -1,0 +1,22 @@
+{
+  "name": "b-show",
+  "description": "",
+  "main": "",
+  "authors": [
+    "xalf"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/xalf/b-shop",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "*",
+    "vue": "2.*",
+    "mocha": "3.*"
+  }
+}

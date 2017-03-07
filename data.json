@@ -1,0 +1,10 @@
+[
+	{
+		"image" : "src/images/img1.jpg",
+		"name" : "some model",
+		"description": "very nice",
+		"cost": "198",
+		"oldcost" : "230",
+		"mod" : "new"
+	}
+]
